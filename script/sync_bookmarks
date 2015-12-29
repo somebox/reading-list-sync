@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+$LOAD_PATH.unshift 'lib'
+require 'bundler'
+Bundler.setup
+
+require 'rubygems'
+require 'reading_list'
+
+ReadingList.sync!
