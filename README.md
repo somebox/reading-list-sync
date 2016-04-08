@@ -1,6 +1,10 @@
 # Add Safari Reading List Bookmarks to Pinboard Unread List
 
+## Problem
+
 Pinboard is great, but the integration into iOS and Mac can be annoying. Too many steps: copy and paste a url into the browser, click the Pinboard bookmarklet, enter tags, etc. On mobile, it's even more steps, and even harder to do.
+
+## Solution
 
 This ruby script automates moving your Reading List bookmarks to Pinboard's "to read" list. It is meant to be run via a scheduled job (with launchd). 
 
@@ -15,6 +19,10 @@ If a Reading List bookmark exists on Pinboard and has no tags, the script will g
 For bookmarks older than 90 days (adjustable), it will sync the bookmark but disable the "toread" flag on Pinboard.
 
 It should be safe to re-run this script over and over without harm. You can clear out your Safari Reading List bookmarks and the posts will remain on Pinboard.
+
+## How It Works
+
+Safari stores bookmarks in a plist file located in `~/Library/Safari/Bookmarks.plist`. By piping this through [plutil](https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/plutil.1.html), a parsable XML file is produced. Bookmarks from the Reading List are extracted, and one-by-one, checked and/or added using the [Pinboard service API](https://pinboard.in/api/).
 
 ## Setup
 

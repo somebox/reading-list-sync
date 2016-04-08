@@ -7,4 +7,6 @@ Bundler.setup
 require 'rubygems'
 require 'reading_list'
 
+warn "starting reading list sync"
 ReadingList.sync!
+warn "done!"
