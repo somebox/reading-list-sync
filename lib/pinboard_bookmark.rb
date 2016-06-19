@@ -48,7 +48,7 @@ class PinboardBookmark
     tags = add_tags(tags, 'reference') if uri.hostname.match(/wikipedia|guide|diy/i)
     %w(hacking ruby rails arduino news photos).each do |word|
       keyword = Regexp.new(word, 'i')
-      tags = add_tags(tags, word) if title.match(keyword) or description.match(keyword)
+      tags = add_tags(tags, word) if title.match(keyword) or description.to_s.match(keyword)
     end
     tags
   end
